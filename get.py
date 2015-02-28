@@ -4,6 +4,7 @@ import gdata.youtube.service
 import youtube_dl
 import os
 from subprocess import call
+import sys
 
 yt_service = gdata.youtube.service.YouTubeService()
 
@@ -21,7 +22,7 @@ def SearchAndPrint(search_terms):
 
 
 
-songname=raw_input("Enter song to download:")
+songname=str(sys.argv)
 SearchAndPrint(songname) 
 
 infile=open("songdata.txt","r")
