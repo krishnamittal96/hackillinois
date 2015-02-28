@@ -30,7 +30,7 @@ while i<len(sys.argv):
 	else:
 		songname=songname+ ' ' +sys.argv[i]
 	i=i+1
-print songname
+
 SearchAndPrint(songname) 
 
 infile=open("songdata.txt","r")
@@ -48,9 +48,9 @@ while infile:
 		break
 infile.close()
 os.remove("songdata.txt")
-print code
 command = "youtube-dl  "+code+" -x --audio-format mp3 -o %(id)s.(ext)s'"
 call(command.split(), shell=False)
 temp=open("filename.txt","w")
-temp.write(code+".mp3")
+os.rename(code+".mp3",songname+".mp3")
+temp.write(songname+".mp3")
 temp.close()
