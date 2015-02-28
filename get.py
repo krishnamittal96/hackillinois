@@ -22,7 +22,15 @@ def SearchAndPrint(search_terms):
 
 
 
-songname=str(sys.argv)
+songname=""
+i=1
+while i<len(sys.argv):
+	if i == 1:
+		songname = sys.argv[i]
+	else:
+		songname=songname+ ' ' +sys.argv[i]
+	i=i+1
+print songname
 SearchAndPrint(songname) 
 
 infile=open("songdata.txt","r")
@@ -41,5 +49,8 @@ while infile:
 infile.close()
 os.remove("songdata.txt")
 print code
-command = "youtube-dl  "+code+" -x --audio-format mp3 -o %(title)s.(ext)s'"
+command = "youtube-dl  "+code+" -x --audio-format mp3 -o %(id)s.(ext)s'"
 call(command.split(), shell=False)
+temp=open("filename.txt","w")
+temp.write(code+".mp3")
+temp.close()
