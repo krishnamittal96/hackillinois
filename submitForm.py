@@ -1,6 +1,14 @@
 import urllib
 from subprocess import call
-artistname=raw_input("Enter name of artist:")
+import sys
+artistname=""
+i=1
+while i<len(sys.argv):
+	if i == 1:
+		artistname = sys.argv[i]
+	else:
+		artistname=artistname+ ' ' +sys.argv[i]
+	i=i+1
 f = urllib.urlopen("https://itunes.apple.com/search?term="+artistname+"&entity=musicArtist")
 temp=open("data.txt","w")
 temp.write(str(f.read()))
