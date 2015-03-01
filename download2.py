@@ -47,7 +47,7 @@ while infile:
 		break
 infile.close()
 os.remove("songdata.txt")
-command="youtube-dl --extract-audio --audio-format mp3 -g http://www.youtube.com/watch?v="+code
+command="youtube-dl -f 141 -g http://www.youtube.com/watch?v="+code
 temp=open("chrome.txt","w")
 call(command.split(), shell=False,stdout=temp)
 #temp=open("filename.txt","w")
